@@ -1,0 +1,11 @@
+{
+  "name": "citf-backend",
+  "version": "1.0.0",
+  "description": "Backend for the Content in Tinder Form Webapp",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paul Harnack",
+  "license": "ISC"
+}
