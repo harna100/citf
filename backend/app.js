@@ -15,11 +15,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get('/', (req, res) =>
-// {
-//   res.status(200).sendFile(path.join( __dirname, '../src/index.html'));
-// });
-
 app.use('/api/user', require('./routes/userRoutes'));
 
 // add error handling middleware

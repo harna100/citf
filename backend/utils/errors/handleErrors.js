@@ -25,7 +25,7 @@ const catchAsyncErrors = fn => (
             routePromise.catch(err => next(err));
         }
     }
-    );
+);
     
 module.exports = {
     handleErrors,
