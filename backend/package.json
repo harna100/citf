@@ -2,10 +2,20 @@
   "name": "citf-backend",
   "version": "1.0.0",
   "description": "Backend for the Content in Tinder Form Webapp",
-  "main": "server.js",
+  "main": "nodemon --inspect=127.0.0.1:9229 server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --inspect=localhost:9229 server.js"
   },
   "author": "Paul Harnack",
-  "license": "ISC"
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
 }
