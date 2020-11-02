@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+    backend:
+        container_name: backend
+        restart: always
+        build: ./backend
+        ports:
+            - "3000:3000"
+            - "9229:9229"
+        depends_on:
+            - mongo
+        volumes:
+            - /usr/src/app/node_modules
+            - ./backend:/usr/src/app
+    frontend:
+        container_name: frontend
+        build: ./frontend
+        ports:
+            - "4200:4200"
+        environment:
+            - "ENV=${ENV}"
+        volumes:
+            - /client/node_modules
+            - /frontend/dist
+            - ./frontend:/client
+            - ./dockerShare/dist:/client/dist/citf
+    webserver:
+        container_name: webserver
+        restart: always
+        build: ./nginx
+        ports:
+            - "8080:80"
+        volumes:
+            - ./dockerShare/dist:/usr/share/nginx/html:ro
+    mongo:
+        container_name: mongo
+        image: mongo
+        expose:
+            - "27017"
+        volumes:
+            - ./dockerShare/mongo:/data/db
+        ports:
+            - "27017:27017"
