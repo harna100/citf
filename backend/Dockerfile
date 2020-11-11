@@ -8,9 +8,9 @@ RUN npm install
 
 COPY . .
 
-# # Main port
-# EXPOSE 3000
-# # Debugging port
-# EXPOSE 9229
+# Main port
+EXPOSE 3000
+# Debugging port
+EXPOSE 9229
 
 CMD [ "npm", "start"]
