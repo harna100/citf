@@ -1,9 +1,16 @@
 version: "3"
 
+networks:
+    # network defined in order to know name for docker test container
+    # will have citf prepended to it when used outside of compose
+    citf_network: {}
+
 services:
     backend:
-        container_name: backend
-        restart: always
+        container_name: citf-backend
+        networks:
+            - citf_network
+        restart: unless-stopped
         build: ./backend
         ports:
             - "3000:3000"
@@ -14,7 +21,9 @@ services:
             - /usr/src/app/node_modules
             - ./backend:/usr/src/app
     frontend:
-        container_name: frontend
+        container_name: citf-frontend
+        networks:
+            - citf_network
         build: ./frontend
         ports:
             - "4200:4200"
@@ -27,15 +36,23 @@ services:
             - ./frontend:/client
             - ./dockerShare/dist:/client/dist/citf
     webserver:
-        container_name: webserver
-        restart: always
-        build: ./nginx
+        container_name: citf-webserver
+        networks:
+            - citf_network
+        restart: unless-stopped
+        image: nginx:alpine
+        depends_on:
+            - frontend
+            - backend
         ports:
             - "8080:80"
         volumes:
+            - ./nginx:/etc/nginx/conf.d/:ro
             - ./dockerShare/dist:/usr/share/nginx/html:ro
     mongo:
-        container_name: mongo
+        container_name: citf-mongo
+        networks:
+            - citf_network
         image: mongo
         expose:
             - "27017"
