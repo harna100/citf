@@ -1,0 +1,20 @@
+version: 2.1
+jobs:
+  build:
+    machine: true
+    environment:
+      ENV: PROD
+      TITLE_NAME: "Citf"
+    steps:
+      - checkout
+      - run: docker-compose up -d
+      - run: chmod +x ./start-docker-test.sh && ./start-docker-test.sh
+  angular-dev:
+    machine: true
+    environment:
+      TITLE_NAME: "Citf"
+    steps:
+      - checkout
+      - run: docker-compose up -d
+      - run: chmod +x ./start-docker-test.sh && ./start-docker-test.sh
+
