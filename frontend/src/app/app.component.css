@@ -1,4 +1,10 @@
 .main-card {
   height: 70%;
   width: 30%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.app-content {
+  min-height: 100vh;
 }

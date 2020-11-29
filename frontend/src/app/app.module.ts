@@ -7,14 +7,19 @@ import { MainCardComponent } from './components/main-card/main-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DarkModeSelectorService } from './services/dark-mode-selector/dark-mode-selector.service';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainCardComponent
+    MainCardComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +27,10 @@ import { DarkModeSelectorService } from './services/dark-mode-selector/dark-mode
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    BrowserAnimationsModule
+    MatToolbarModule,
+    MatSlideToggleModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [DarkModeSelectorService],
   bootstrap: [AppComponent]

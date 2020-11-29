@@ -1,11 +1,11 @@
-.test {
+.share-fav {
   display: flex;
   justify-content: space-between;
   margin-left: 20px;
   margin-right: 20px;
 }
 
-.test button {
+.share-fav button {
   transform: scale(1.5);
 }
 
